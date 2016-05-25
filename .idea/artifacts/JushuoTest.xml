@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JushuoTest">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="JushuoTest.jar">
+      <element id="module-output" name="JushuoTest" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/json/json-20160212.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
