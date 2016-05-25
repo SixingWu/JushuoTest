@@ -17,7 +17,7 @@ public class FFMpegTest {
         double duration = jsonInfor.getJSONArray("streams").getJSONObject(0).getDouble("duration");
         //按照15S对他进行拆分
         for(int i=0;i<duration;i+=15){
-            RuntimeWorker.query("ffmpeg -ss "+i+" -t"+15+" -i "+file+" -acodec copy -vcodec copy /home/azureuser/server/raws/"+tid+"#"+i+suffix);
+            RuntimeWorker.query("ffmpeg -ss "+i+" -t "+15+" -i "+file+" -acodec copy -vcodec copy /home/azureuser/server/raws/"+tid+"#"+i+suffix);
         }
         //截取对应的图片和进行音频的转化 视频每段->mp3->amr
         for(int i=0;i<duration;i+=15){
