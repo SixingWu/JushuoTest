@@ -1,5 +1,6 @@
 import org.json.JSONObject;
 
+
 /**
  * Created by MebiuW on 16/5/25.
  */
@@ -7,11 +8,10 @@ public class FFMpegTest {
     public static void main(String args[]){
         String file = "/home/azureuser/video/a6300.mp4";
         String tid = "23423423";
-
         //将文件下载,并按照tid保存到零时目录下
        // RuntimeWorker.execute("cd /home/azureuser/server/raws");
         //调用查询视频的长度信息
-        String videoInfor = RuntimeWorker.query("ffprobe -v -y quiet -print_format json -show_format -show_streams " + file);
+        String videoInfor = RuntimeWorker.query("ffprobe -v quiet -print_format json -show_format -show_streams " + file);
         JSONObject jsonInfor = new JSONObject(videoInfor);
         String suffix = file.substring(file.lastIndexOf("."));
         double duration = jsonInfor.getJSONArray("streams").getJSONObject(0).getDouble("duration");
