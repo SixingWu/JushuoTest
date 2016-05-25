@@ -19,6 +19,9 @@ public class FFMpegTest {
         for(int i=0;i<duration;i+=15){
             RuntimeWorker.query("ffmpeg -y -ss "+i+" -t "+15+" -i "+file+" -acodec copy -vcodec copy /home/azureuser/server/raws/"+tid+"#"+i+suffix);
         }
+        for(int i=0;i<duration;i++){
+            RuntimeWorker.query("ffmpeg -y -ss "+i+"  -i "+file+" -f image2 -y  /home/azureuser/server/raws/"+tid+"#"+i+".jpg");
+        }
         //截取对应的图片和进行音频的转化 视频每段->mp3->amr
         for(int i=0;i<duration;i+=15){
             String subfilename=tid+"#"+i+suffix;
