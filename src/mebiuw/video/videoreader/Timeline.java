@@ -71,6 +71,30 @@ public class Timeline {
 
     }
 
+    public List<String> getTokens() {
+        return tokens;
+    }
+
+    public void setTokens(List<String> tokens) {
+        this.tokens = tokens;
+    }
+
+    public List<String> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(List<String> keywords) {
+        this.keywords = keywords;
+    }
+
+    public Map<String, Object> getMetaDatas() {
+        return metaDatas;
+    }
+
+    public void setMetaDatas(Map<String, Object> metaDatas) {
+        this.metaDatas = metaDatas;
+    }
+
     public String getTmpAudioPosition(){
         return (String)this.metaDatas.get("mp3");
     }
@@ -102,4 +126,7 @@ public class Timeline {
                 ", metaDatas=" + metaDatas +
                 '}';
     }
+
+
+
 }
