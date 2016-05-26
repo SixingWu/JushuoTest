@@ -76,7 +76,7 @@ public class VideoReader {
              */
             flag &= RuntimeWorker.execute("ffmpeg -y -ss "+i+" -t "+interval+" -i "+filePosition+" -acodec copy -vcodec copy "+timeline.getMyFilePosition());
             flag &=RuntimeWorker.execute("ffmpeg -y -i "+timeline.getMyFilePosition()+" -vn "+timeline.getTmpAudioPosition());
-            flag &=RuntimeWorker.execute("ffmpeg -y -i "+timeline.getTmpAudioPosition()+"#"+i+".mp3"+" -ar 8000 -ab 12.2k -ac 1 "+timeline.getAudioPosition());
+            flag &=RuntimeWorker.execute("ffmpeg -y -i "+timeline.getTmpAudioPosition()+" -ar 8000 -ab 12.2k -ac 1 "+timeline.getAudioPosition());
             System.out.println(TextToAudio.convert(timeline.getAudioPosition()));
             /**
              * 进行截图
