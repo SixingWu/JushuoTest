@@ -54,6 +54,9 @@ public class Timeline {
         this.metaDatas = new HashMap<>();
     }
 
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public void setTmpAudioPosition(String str){
         this.metaDatas.put("mp3",str);
@@ -74,5 +77,29 @@ public class Timeline {
 
     public String getAudioPosition(){
         return (String)this.metaDatas.get("amr");
+    }
+
+    public void setImgPrefix(String str){
+        this.metaDatas.put("img",str);
+
+    }
+
+    public String getImgPosition(int index){
+        return (String)this.metaDatas.get("img")+index+".jpg";
+    }
+
+    @Override
+    public String toString() {
+        return "Timeline{" +
+                "startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", duration=" + duration +
+                ", text='" + text + '\'' +
+                ", tokens=" + tokens +
+                ", keywords=" + keywords +
+                ", sourceFilePosition='" + sourceFilePosition + '\'' +
+                ", myFilePosition='" + myFilePosition + '\'' +
+                ", metaDatas=" + metaDatas +
+                '}';
     }
 }

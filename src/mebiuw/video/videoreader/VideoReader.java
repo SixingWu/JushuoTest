@@ -77,13 +77,15 @@ public class VideoReader {
             flag &= RuntimeWorker.execute("ffmpeg -y -ss "+i+" -t "+interval+" -i "+filePosition+" -acodec copy -vcodec copy "+timeline.getMyFilePosition());
             flag &=RuntimeWorker.execute("ffmpeg -y -i "+timeline.getMyFilePosition()+" -vn "+timeline.getTmpAudioPosition());
             flag &=RuntimeWorker.execute("ffmpeg -y -i "+timeline.getTmpAudioPosition()+" -ar 8000 -ab 12.2k -ac 1 "+timeline.getAudioPosition());
-            System.out.println(TextToAudio.convert(timeline.getAudioPosition()));
+            timeline.setText(TextToAudio.convert(timeline.getAudioPosition()));
             /**
              * 进行截图
              */
+            timeline.setImgPrefix(folderLocation+"/"+tid+"#");
             for(int j=i;j<1+duration;j++){
-                flag &= RuntimeWorker.execute("ffmpeg -y -ss "+i+"  -i "+filePosition+" -f image2 -y  "+folderLocation+"/"+tid+"#"+j+".jpg");
+                flag &= RuntimeWorker.execute("ffmpeg -y -ss "+i+"  -i "+filePosition+" -f image2 -y  "+timeline.getImgPosition(j));
             }
+            System.out.println(timeline.toString());
         }
 
         return flag;
