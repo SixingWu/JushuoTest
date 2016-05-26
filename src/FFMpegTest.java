@@ -30,7 +30,7 @@ public class FFMpegTest {
             String finalname = tid+"#"+i+".amr";
             RuntimeWorker.query("ffmpeg -y -i /home/azureuser/server/raws/"+subfilename+" -vn /home/azureuser/server/raws/"+tmpname);
             RuntimeWorker.query("ffmpeg -y -i /home/azureuser/server/raws/"+tmpname+" -ar 8000 -ab 12.2k -ac 1 /home/azureuser/server/raws/"+finalname);
-            System.out.println(TextToAudio.convert("ffmpeg -y -i /home/azureuser/server/raws/"+tmpname+" -ar 8000 -ab 12.2k -ac 1 /home/azureuser/server/raws/"+finalname));
+            System.out.println(TextToAudio.convert("/home/azureuser/server/raws/"+finalname));
         }
         //调用百度API做关键字识别
 
