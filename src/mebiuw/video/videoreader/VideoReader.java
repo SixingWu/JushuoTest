@@ -3,6 +3,10 @@ package mebiuw.video.videoreader;
 import org.json.JSONObject;
 import mebiuw.common.system.RuntimeWorker;
 
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 读取Video的内容,并将其转化成图片和文字等
  * 目前仅支持中文
@@ -63,11 +67,12 @@ public class VideoReader {
      * @param duration 持续时长
      * @return
      */
-    public boolean worker(String tid,String filePosition,double duration){
+    public List<Timeline> worker(String tid, String filePosition, double duration){
+        List<Timeline> timelines = new ArrayList<Timeline>();
         String suffix = filePosition.substring(filePosition.lastIndexOf('.'));
         boolean flag = true;
         for(int i=0;i<duration;i+=interval){
-            Timeline timeline = new Timeline(filePosition,folderLocation+"/"+tid+"#"+i+suffix,i,i+(int)duration,(int)duration);
+            Timeline timeline = new Timeline(filePosition,folderLocation+"/"+tid+"#"+i+suffix,i,i+(int)interval,(int)interval);
             timeline.setTmpAudioPosition(folderLocation+"/"+tid+"#"+i+".mp3");
             timeline.setAudioPosition(folderLocation+"/"+tid+"#"+i+".amr");
 
@@ -82,13 +87,14 @@ public class VideoReader {
              * 进行截图
              */
             timeline.setImgPrefix(folderLocation+"/"+tid+"#");
-            for(int j=i;j<i+duration;j++){
+            for(int j=i;j<i+interval;j++){
                 flag &= RuntimeWorker.execute("ffmpeg -y -ss "+j+"  -i "+filePosition+" -f image2 -y  "+timeline.getImgPosition(j));
             }
             System.out.println(timeline.toString());
+            timelines.add(timeline);
         }
-
-        return flag;
+        System.out.println(timelines);
+        return timelines;
     }
 
     private double queryVideoDuration(String filePosition){
