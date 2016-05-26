@@ -82,8 +82,8 @@ public class VideoReader {
              * 进行截图
              */
             timeline.setImgPrefix(folderLocation+"/"+tid+"#");
-            for(int j=i;j<1+duration;j++){
-                flag &= RuntimeWorker.execute("ffmpeg -y -ss "+i+"  -i "+filePosition+" -f image2 -y  "+timeline.getImgPosition(j));
+            for(int j=i;j<i+duration;j++){
+                flag &= RuntimeWorker.execute("ffmpeg -y -ss "+j+"  -i "+filePosition+" -f image2 -y  "+timeline.getImgPosition(j));
             }
             System.out.println(timeline.toString());
         }
