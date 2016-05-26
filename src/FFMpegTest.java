@@ -1,11 +1,12 @@
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 
 /**
  * Created by MebiuW on 16/5/25.
  */
 public class FFMpegTest {
-    public static void main(String args[]){
+    public static void main(String args[]) throws  Exception{
         String file = "/home/azureuser/video/a6300.mp4";
         String tid = "23423423";
         //将文件下载,并按照tid保存到零时目录下
@@ -29,6 +30,9 @@ public class FFMpegTest {
             String finalname = tid+"#"+i+".amr";
             RuntimeWorker.query("ffmpeg -y -i /home/azureuser/server/raws/"+subfilename+" -vn /home/azureuser/server/raws/"+tmpname);
             RuntimeWorker.query("ffmpeg -y -i /home/azureuser/server/raws/"+tmpname+" -ar 8000 -ab 12.2k -ac 1 /home/azureuser/server/raws/"+finalname);
+            System.out.println(TextToAudio.convert("ffmpeg -y -i /home/azureuser/server/raws/"+tmpname+" -ar 8000 -ab 12.2k -ac 1 /home/azureuser/server/raws/"+finalname));
         }
+        //调用百度API做关键字识别
+
     }
 }
