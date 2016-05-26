@@ -38,6 +38,7 @@ public class Timeline {
     /**
      * 时间线
      *
+     *
      * @param sourceFilePosition 原始视频的地址
      * @param myFilePosition 当前分段视频地址
      * @param startTime 在整个时间片段内的开始时间
