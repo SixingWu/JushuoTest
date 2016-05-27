@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="VideoWorker">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/mylib/VideoWorker.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
